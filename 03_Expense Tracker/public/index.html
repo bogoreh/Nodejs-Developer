@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-money-bill-wave"></i> Expense Tracker</h1>
+            <p class="subtitle">Track your daily and monthly expenses with beautiful charts</p>
+        </header>
+
+        <div class="dashboard">
+            <div class="card total-card">
+                <h3><i class="fas fa-wallet"></i> Total Expenses</h3>
+                <p class="amount" id="totalAmount">$0.00</p>
+                <p class="period">This Month</p>
+            </div>
+            
+            <div class="card category-card">
+                <h3><i class="fas fa-tags"></i> Top Category</h3>
+                <p id="topCategory">-</p>
+                <p class="period">Highest spending</p>
+            </div>
+            
+            <div class="card count-card">
+                <h3><i class="fas fa-receipt"></i> Total Items</h3>
+                <p class="count" id="totalItems">0</p>
+                <p class="period">Transactions</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="card form-card">
+                    <h3><i class="fas fa-plus-circle"></i> Add New Expense</h3>
+                    <form id="expenseForm">
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" id="description" placeholder="e.g., Coffee, Groceries..." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="amount">Amount ($)</label>
+                            <input type="number" id="amount" step="0.01" min="0" placeholder="0.00" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" required>
+                                <option value="">Select Category</option>
+                                <option value="Food">Food</option>
+                                <option value="Transportation">Transportation</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Shopping">Shopping</option>
+                                <option value="Utilities">Utilities</option>
+                                <option value="Healthcare">Healthcare</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-add">
+                            <i class="fas fa-plus"></i> Add Expense
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="card chart-card">
+                    <h3><i class="fas fa-chart-pie"></i> Category Breakdown</h3>
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <div class="card expenses-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list"></i> Recent Expenses</h3>
+                        <div class="period-selector">
+                            <button class="period-btn active" data-period="all">All</button>
+                            <button class="period-btn" data-period="month">This Month</button>
+                            <button class="period-btn" data-period="week">This Week</button>
+                        </div>
+                    </div>
+                    <div class="expenses-list" id="expensesList">
+                        <!-- Expenses will be loaded here -->
+                        <div class="loading">Loading expenses...</div>
+                    </div>
+                </div>
+                
+                <div class="card chart-card">
+                    <h3><i class="fas fa-chart-line"></i> Daily Expenses Trend</h3>
+                    <div class="chart-container">
+                        <canvas id="dailyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Expense Tracker &copy; 2026 | Track smarter, save more!</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
