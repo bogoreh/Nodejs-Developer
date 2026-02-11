@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Notes App - File Based Storage</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>📝 Notes App</h1>
+                <p class="subtitle">File-Based Storage with Node.js & Express</p>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Create Note Section -->
+            <section class="create-note">
+                <div class="section-header">
+                    <h2>✨ Create New Note</h2>
+                </div>
+                <form id="noteForm">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            id="noteTitle" 
+                            placeholder="Enter note title..." 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <textarea 
+                            id="noteContent" 
+                            rows="6" 
+                            placeholder="Write your note here..." 
+                            required
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <span class="btn-icon">💾</span> Save Note
+                    </button>
+                </form>
+                <div id="notification" class="notification"></div>
+            </section>
+
+            <!-- Notes List Section -->
+            <section class="notes-list">
+                <div class="section-header">
+                    <h2>📋 Your Notes</h2>
+                    <span id="noteCount" class="note-count"></span>
+                </div>
+                <div id="notesContainer" class="notes-grid">
+                    <!-- Notes will be dynamically added here -->
+                    <div class="loading-message">Loading your notes...</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Note Detail Modal -->
+        <div id="noteModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle"></h3>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="note-meta">
+                        <span id="modalDate"></span>
+                    </div>
+                    <div id="modalContent" class="modal-note-content"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-delete" onclick="deleteCurrentNote()">
+                        <span class="btn-icon">🗑️</span> Delete Note
+                    </button>
+                    <button class="btn-secondary" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
