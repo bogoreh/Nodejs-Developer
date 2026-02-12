@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Calculator API - Simple & Elegant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧮 Simple Calculator API</h1>
+            <p class="subtitle">A beginner-friendly Node.js calculator with a beautiful interface</p>
+        </header>
+
+        <div class="calculator-card">
+            <div class="api-badge">
+                <span class="badge">REST API</span>
+                <span class="badge">Express.js</span>
+                <span class="badge">JSON</span>
+            </div>
+
+            <div class="input-section">
+                <h2>Try it out!</h2>
+                <div class="input-group">
+                    <div class="input-field">
+                        <label for="num1">First Number</label>
+                        <input type="number" id="num1" placeholder="Enter first number" step="any">
+                    </div>
+                    <div class="input-field">
+                        <label for="num2">Second Number</label>
+                        <input type="number" id="num2" placeholder="Enter second number" step="any">
+                    </div>
+                </div>
+            </div>
+
+            <div class="operations">
+                <button onclick="calculate('add')" class="operation-btn add">
+                    <span class="symbol">+</span>
+                    <span class="text">Add</span>
+                </button>
+                <button onclick="calculate('subtract')" class="operation-btn subtract">
+                    <span class="symbol">−</span>
+                    <span class="text">Subtract</span>
+                </button>
+                <button onclick="calculate('multiply')" class="operation-btn multiply">
+                    <span class="symbol">×</span>
+                    <span class="text">Multiply</span>
+                </button>
+                <button onclick="calculate('divide')" class="operation-btn divide">
+                    <span class="symbol">÷</span>
+                    <span class="text">Divide</span>
+                </button>
+            </div>
+
+            <div id="result-container" class="result-container hidden">
+                <h3>Result</h3>
+                <div id="result-content"></div>
+            </div>
+        </div>
+
+        <div class="api-docs">
+            <h2>📚 API Endpoints</h2>
+            <div class="endpoints">
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <code>/api/add?num1=5&num2=3</code>
+                </div>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <code>/api/subtract?num1=5&num2=3</code>
+                </div>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <code>/api/multiply?num1=5&num2=3</code>
+                </div>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <code>/api/divide?num1=6&num2=3</code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
