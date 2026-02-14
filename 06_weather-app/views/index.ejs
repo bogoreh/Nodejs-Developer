@@ -1,0 +1,93 @@
+<%- include('partials/header') %>
+
+    <div class="weather-card">
+        <h1 class="title">🌤️ Weather Dashboard</h1>
+        <p class="subtitle">Get real-time weather information for any city</p>
+        
+        <form action="/weather" method="POST" class="search-form" id="weatherForm">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    name="city" 
+                    placeholder="Enter city name..." 
+                    value="<%= city %>"
+                    class="city-input"
+                    id="cityInput"
+                    required
+                >
+                <button type="submit" class="search-btn">
+                    <span>Search</span>
+                    <span class="search-icon">🔍</span>
+                </button>
+            </div>
+        </form>
+
+        <% if (error) { %>
+            <div class="error-message">
+                <span class="error-icon">⚠️</span>
+                <p><%= error %></p>
+            </div>
+        <% } %>
+
+        <% if (weather) { %>
+            <div class="weather-result">
+                <div class="location-header">
+                    <h2><%= weather.city %>, <%= weather.country %></h2>
+                    <p class="date"><%= weather.date %></p>
+                </div>
+
+                <div class="weather-main">
+                    <div class="temperature-section">
+                        <img 
+                            src="https://openweathermap.org/img/wn/<%= weather.icon %>@4x.png" 
+                            alt="<%= weather.description %>"
+                            class="weather-icon"
+                        >
+                        <div class="temperature">
+                            <span class="temp-value"><%= weather.temperature %></span>
+                            <span class="temp-unit">°C</span>
+                        </div>
+                        <p class="weather-desc"><%= weather.description %></p>
+                        <p class="feels-like">Feels like <%= weather.feelsLike %>°C</p>
+                    </div>
+
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">💧</span>
+                            <div class="detail-info">
+                                <span class="detail-label">Humidity</span>
+                                <span class="detail-value"><%= weather.humidity %>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-icon">🌪️</span>
+                            <div class="detail-info">
+                                <span class="detail-label">Wind Speed</span>
+                                <span class="detail-value"><%= weather.windSpeed %> m/s</span>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <span class="detail-icon">📊</span>
+                            <div class="detail-info">
+                                <span class="detail-label">Pressure</span>
+                                <span class="detail-value"><%= weather.pressure %> hPa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } else if (!error) { %>
+            <div class="welcome-message">
+                <div class="welcome-icon">🌎</div>
+                <h3>Welcome to Weather Dashboard</h3>
+                <p>Enter a city name above to get current weather information</p>
+                <div class="example-cities">
+                    <span>Try: London, Tokyo, New York, Paris</span>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+<%- include('partials/footer') %>
