@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener - Simple & Fast</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <i class="fas fa-link"></i>
+                URL Shortener
+            </h1>
+            <p class="subtitle">Transform long URLs into short, memorable links</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-globe input-icon"></i>
+                        <input 
+                            type="url" 
+                            id="urlInput" 
+                            placeholder="Paste your long URL here..."
+                            autocomplete="off"
+                        >
+                    </div>
+                    <button id="shortenBtn" class="btn-primary">
+                        <i class="fas fa-scissors"></i>
+                        Shorten URL
+                    </button>
+                </div>
+                
+                <div id="result" class="result hidden">
+                    <div class="result-content">
+                        <div class="short-url-wrapper">
+                            <span id="shortUrl" class="short-url"></span>
+                            <button id="copyBtn" class="btn-icon" title="Copy to clipboard">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                        <p id="originalUrl" class="original-url"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="urlList" class="url-list">
+                <div class="list-header">
+                    <h2><i class="fas fa-history"></i> Recent Shortened URLs</h2>
+                    <span id="urlCount" class="url-count">0</span>
+                </div>
+                <div id="urlListContainer" class="url-list-container">
+                    <!-- URLs will be dynamically added here -->
+                </div>
+            </div>
+        </main>
+
+        <div id="toast" class="toast hidden">
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
