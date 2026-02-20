@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Auth System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">AuthSystem</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/logout" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-card">
+            <h1>Welcome to Your Dashboard</h1>
+            
+            <div class="user-info">
+                <p><strong>Username:</strong> <span id="username"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span></p>
+                <p><strong>Member since:</strong> <span id="memberSince"></span></p>
+            </div>
+            
+            <p>This is your protected dashboard. Only authenticated users can see this page.</p>
+        </div>
+    </div>
+
+    <script>
+        // Get user info from session
+        checkAuth().then(authData => {
+            if (!authData.authenticated) {
+                window.location.href = '/login';
+            } else {
+                document.getElementById('username').textContent = authData.user.username;
+                document.getElementById('email').textContent = authData.user.email;
+                document.getElementById('memberSince').textContent = new Date().toLocaleDateString();
+            }
+        });
+    </script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Auth System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">AuthSystem</a>
+            <div class="nav-links" id="navLinks">
+                <!-- Links will be populated by JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <h1>Welcome to AuthSystem</h1>
+            <p>A simple and secure authentication system built with Node.js</p>
+            <div class="cta-buttons" id="ctaButtons">
+                <a href="/register" class="cta-btn cta-btn-primary">Get Started</a>
+                <a href="/login" class="cta-btn cta-btn-secondary">Login</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+    <script>
+        // Update navigation based on auth status
+        checkAuth().then(authData => {
+            const navLinks = document.getElementById('navLinks');
+            const ctaButtons = document.getElementById('ctaButtons');
+            
+            if (authData.authenticated) {
+                navLinks.innerHTML = `
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/logout" class="btn-logout">Logout</a>
+                `;
+                if (ctaButtons) {
+                    ctaButtons.innerHTML = `
+                        <a href="/dashboard" class="cta-btn cta-btn-primary">Go to Dashboard</a>
+                    `;
+                }
+            } else {
+                navLinks.innerHTML = `
+                    <a href="/">Home</a>
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
